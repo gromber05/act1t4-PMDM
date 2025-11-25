@@ -29,8 +29,8 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import java.io.IOException
 
-private const val AUDIO_URL = "https://www.example.com/audio_largo.mp3"
-private const val VIDEO_URL = "https://www.example.com/video_demo.mp4"
+private const val AUDIO_URL = "https://github.com/gromber05/act1t4-PMDM/blob/main/app/src/main/res/vids/end_of_beggining.mp3"
+private const val VIDEO_URL = "https://github.com/gromber05/act1t4-PMDM/blob/main/app/src/main/res/vids/end_of_beggining.mp4"
 
 @SuppressLint("Range")
 @Composable
