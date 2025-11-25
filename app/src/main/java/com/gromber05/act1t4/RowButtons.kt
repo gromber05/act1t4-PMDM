@@ -1,7 +1,9 @@
 package com.gromber05.act1t4
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -16,21 +18,19 @@ fun RowButtons(
     playText: String,
     pauseText: String
 ) {
-    androidx.compose.foundation.layout.Row(
-        modifier = Modifier.fillMaxSize()
+    Row(
+        modifier = Modifier.fillMaxWidth()
     ) {
         Button(
             onClick = onPlay,
-            modifier = Modifier
-                .weight(1f)
+            modifier = Modifier.weight(1f)
         ) {
             Text(text = playText)
         }
         Spacer(modifier = Modifier.width(8.dp))
         Button(
             onClick = onPause,
-            modifier = Modifier
-                .weight(1f)
+            modifier = Modifier.weight(1f)
         ) {
             Text(text = pauseText)
         }

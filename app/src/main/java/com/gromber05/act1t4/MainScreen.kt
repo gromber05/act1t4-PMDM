@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -29,12 +30,13 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import java.io.IOException
 
-private const val AUDIO_URL = "https://github.com/gromber05/act1t4-PMDM/blob/main/app/src/main/res/raw/end_of_beggining.mp3"
-private const val VIDEO_URL = "https://github.com/gromber05/act1t4-PMDM/blob/main/app/src/main/res/raw/end_of_beggining2.mp4"
+private const val AUDIO_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
 
-@SuppressLint("Range")
+private const val VIDEO_URL = "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+
+
 @Composable
-fun MainScreen() {
+fun MainScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
 
     var soundLoaded by remember { mutableStateOf(false) }
@@ -42,8 +44,8 @@ fun MainScreen() {
 
     val soundPool = remember {
         val audioAttributes = AudioAttributes.Builder()
-            .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(AudioAttributes.USAGE_MEDIA)
+            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
             .build()
 
         SoundPool.Builder()
@@ -104,7 +106,7 @@ fun MainScreen() {
     }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -117,9 +119,7 @@ fun MainScreen() {
                     Toast.makeText(context, "Sonido aún no cargado", Toast.LENGTH_SHORT).show()
                 }
             },
-            modifier = Modifier
-                .fillMaxSize()
-                .weight(0f, false)
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Reproducir sonido corto (SoundPool)")
         }
@@ -137,6 +137,8 @@ fun MainScreen() {
             },
             modifier = Modifier
                 .padding(top = 8.dp)
+                .fillMaxWidth()
+                .height(80.dp)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -161,6 +163,7 @@ fun MainScreen() {
             },
             modifier = Modifier
                 .padding(top = 8.dp)
+                .fillMaxWidth()
                 .height(200.dp)
         )
 
@@ -188,13 +191,13 @@ fun MainScreen() {
                     cameraPermissionLauncher.launch(Manifest.permission.CAMERA)
                 }
             },
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Abrir cámara y guardar foto")
         }
     }
 }
+
 
 private fun saveImage(context: Context, bitmap: Bitmap) {
     val fileName = "foto_${System.currentTimeMillis()}.jpg"
