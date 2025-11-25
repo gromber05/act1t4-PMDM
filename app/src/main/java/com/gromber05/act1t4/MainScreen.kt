@@ -190,7 +190,6 @@ fun MainScreen() {
             },
             modifier = Modifier
                 .fillMaxSize()
-                .weight(0f, false)
         ) {
             Text(text = "Abrir cámara y guardar foto")
         }
